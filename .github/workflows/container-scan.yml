@@ -14,7 +14,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t my-app:latest .
+          docker build -t my-demo-app:latest .
 
       - name: Run AccuKnox Container Scanner
         uses: accuknox/container-scan-action@1.0.0
@@ -22,7 +22,7 @@ jobs:
           endpoint:   ${{ secrets.ENDPOINT }}
           token:      ${{ secrets.TOKEN }}
           tenant_id:  ${{ secrets.TENANT_ID }}
-          image:      "my-app"
+          image:      "my-demo-app"
           tag:        "latest"
-          severity:   "HIGH, CRITICAL"
+          severity:   "HIGH,CRITICAL"
           label:      ${{ secrets.LABEL }}
