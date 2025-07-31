@@ -2,11 +2,9 @@ name: AccuKnox IaC Scan Workflow
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   tests:
@@ -19,22 +17,20 @@ jobs:
       - name: Run IaC scan
         uses: accuknox/iac-scan-action@v0.0.1
         with:
-          directory: "./iac"                     # Directory to scan
-          compact: true                      # Minimise output
-          quiet: true                        # Only failed checks
-          output_format: json                # Output format
-          output_file_path: "results.json"   # Output file path
+          directory: "./iac"                   # 👈 point to the correct folder
+          compact: true
+          quiet: true
+          output_format: json
+          output_file_path: "results.json"
           token: ${{ secrets.TOKEN }}
           tenant_id: ${{ secrets.TENANT_ID }}
           endpoint: ${{ secrets.ENDPOINT }}
           label: ${{ secrets.LABEL }}
 
       - name: Debug files
-        run: |
-          echo "📂 Listing files:"
-          ls -la
+        run: ls -la
 
-      - name: Patch results with metadata (safe version)
+      - name: Patch results with metadata
         run: |
           if [ -f results.json ]; then
             echo "✅ Found results.json. Patching..."
