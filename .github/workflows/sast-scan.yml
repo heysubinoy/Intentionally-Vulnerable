@@ -7,23 +7,20 @@ on:
     branches: [main]
 
 jobs:
-  sast-scan:
+  sast:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Run AccuKnox SAST Scan
+      - name: Run SAST Scan with Sonar
         uses: accuknox/sast-scan-action@v1.0.0
         with:
-          directory: "./container-app"              # 👈 Update based on your code folder
-          output_format: "json"
-          output_file_path: "sast-results.json"
-          token: ${{ secrets.TOKEN }}
+          sonar_host_url: ${{ secrets.SONAR_HOST_URL }}
+          sonar_token: ${{ secrets.SONAR_TOKEN }}
+          sonar_project_key: ${{ secrets.SONAR_PROJECT_KEY }}
+          accuknox_token: ${{ secrets.ACCUKNOX_TOKEN }}
+          accuknox_endpoint: ${{ secrets.ACCUKNOX_ENDPOINT }}
           tenant_id: ${{ secrets.TENANT_ID }}
-          endpoint: ${{ secrets.ENDPOINT }}
-          label: ${{ secrets.LABEL }}
-
-      - name: List generated files
-        run: ls -la
+          label: ${{ secrets.ACCUKNOX_LABEL }}
