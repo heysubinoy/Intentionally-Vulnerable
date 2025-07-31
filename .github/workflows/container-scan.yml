@@ -16,14 +16,14 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run AccuKnox CSPM Container Scan
-        uses: accuknox/container-scan-action@v0.0.1
+        uses: accuknox/container-scan-action@1.0.0
         with:
-          token: ${{ secrets.ACCUKNOX_TOKEN }}
-          tenant_id: ${{ secrets.TENANT_ID }}
-          repository_name: ${{ github.repository }}
-          label: ${{ secrets.ACCUKNOX_LABEL }}
-          endpoint: ${{ secrets.ACCUKNOX_ENDPOINT }}
+          endpoint:   ${{ secrets.ACCUKNOX_ENDPOINT }}
+          token:      ${{ secrets.ACCUKNOX_TOKEN }}
+          tenant_id:  ${{ secrets.TENANT_ID }}
+          image:      "my-demo-app"
+          tag:        "latest"
+          severity:   "HIGH, CRITICAL"
+          label:      ${{ secrets.ACCUKNOX_LABEL }}
           dockerfile_context: Dockerfile
-          tag: ${{ github.run_id }}
-          severity: CRITICAL
           exit_code: 1
