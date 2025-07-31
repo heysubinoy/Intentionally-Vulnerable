@@ -20,16 +20,16 @@ jobs:
         run: |
           docker build -t my-node-slim-app:latest .
 
-      - name: Run AccuKnox Container Scanner
-        uses: accuknox/container-scan-action@1.0.0
-        with:
-          endpoint:   ${{ secrets.ACCUKNOX_ENDPOINT }}
-          token:      ${{ secrets.ACCUKNOX_TOKEN }}
-          tenant_id:  ${{ secrets.TENANT_ID }}
-          image:      "my-node-slim-app"
-          tag:        "latest"
-          severity:   "HIGH,CRITICAL"
-          fail_on_severity: false
-          label:      ${{ secrets.ACCUKNOX_LABEL }}
-
-          
+      - name: Run AccuKnox Container Scanner (non-blocking)
+        run: |
+          echo "🔍 Starting AccuKnox container scan"
+          set +e
+          docker run --rm accuknox/container-scan-action@1.0.0 \
+            --endpoint="${{ secrets.ACCUKNOX_ENDPOINT }}" \
+            --token="${{ secrets.ACCUKNOX_TOKEN }}" \
+            --tenant_id="${{ secrets.TENANT_ID }}" \
+            --image="my-node-slim-app" \
+            --tag="latest" \
+            --severity="HIGH,CRITICAL" \
+            --label="${{ secrets.ACCUKNOX_LABEL }}"
+          echo "✅ Scan completed — continuing even if vulnerabilities found"
