@@ -1,28 +1,29 @@
-name: AccuKnox Container Scan
+name: AccuKnox Container Scan Workflow
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  container-scan:
+  accuknox-container-scan:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Build Docker image
-        run: |
-          docker build -t my-demo-app:latest .
-
-      - name: Run AccuKnox Container Scanner
-        uses: accuknox/container-scan-action@1.0.0
+      - name: Run AccuKnox CSPM Container Scan
+        uses: accuknox/container-scan-action@v0.0.1
         with:
-          endpoint:   ${{ secrets.ENDPOINT }}
-          token:      ${{ secrets.TOKEN }}
-          tenant_id:  ${{ secrets.TENANT_ID }}
-          image:      "my-demo-app"
-          tag:        "latest"
-          severity:   "HIGH,CRITICAL"
-          label:      ${{ secrets.LABEL }}
+          token: ${{ secrets.ACCUKNOX_TOKEN }}
+          tenant_id: ${{ secrets.TENANT_ID }}
+          repository_name: ${{ github.repository }}
+          label: ${{ secrets.ACCUKNOX_LABEL }}
+          endpoint: ${{ secrets.ACCUKNOX_ENDPOINT }}
+          dockerfile_context: Dockerfile
+          tag: ${{ github.run_id }}
+          severity: CRITICAL
+          exit_code: 1
