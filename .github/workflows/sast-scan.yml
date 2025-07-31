@@ -1,0 +1,29 @@
+name: AccuKnox SAST Scan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  sast-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run AccuKnox SAST Scan
+        uses: accuknox/sast-scan-action@v1.0.0
+        with:
+          directory: "./container-app"              # 👈 Update based on your code folder
+          output_format: "json"
+          output_file_path: "sast-results.json"
+          token: ${{ secrets.TOKEN }}
+          tenant_id: ${{ secrets.TENANT_ID }}
+          endpoint: ${{ secrets.ENDPOINT }}
+          label: ${{ secrets.LABEL }}
+
+      - name: List generated files
+        run: ls -la
