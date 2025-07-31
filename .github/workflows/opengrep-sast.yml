@@ -1,0 +1,30 @@
+name: OpenGrep SAST Scan
+
+on:
+  push:
+    branches: [main]  # or any branch you'd like
+
+jobs:
+  sast-opengrep:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install OpenGrep CLI
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/accuknox/opengrep/main/install.sh | sh -s --
+
+      - name: Run OpenGrep Scan
+        run: |
+          ./opengrep scan . --output results.json
+
+      - name: Upload OpenGrep Results to AccuKnox
+        uses: accuknox/opengrep-sast-upload-action@v0.0.1
+        with:
+          file: results.json
+          token: ${{ secrets.TOKEN }}
+          tenant_id: ${{ secrets.TENANT_ID }}
+          endpoint: ${{ secrets.ENDPOINT }}
+          label: ${{ secrets.LABEL }}
