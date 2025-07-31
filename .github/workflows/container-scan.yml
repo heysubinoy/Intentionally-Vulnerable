@@ -30,3 +30,4 @@ jobs:
           tag:        "latest"
           severity:   "HIGH,CRITICAL"
           label:      ${{ secrets.ACCUKNOX_LABEL }}
+          
