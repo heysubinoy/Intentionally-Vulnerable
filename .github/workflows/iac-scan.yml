@@ -19,8 +19,8 @@ jobs:
       - name: Run IaC scan
         uses: accuknox/iac-scan-action@v0.0.1
         with:
-          directory: "."                     # Directory to scan
-          compact: true                      # Minimize output
+          directory: "./iac"                     # Directory to scan
+          compact: true                      # Minimise output
           quiet: true                        # Only failed checks
           output_format: json                # Output format
           output_file_path: "results.json"   # Output file path
