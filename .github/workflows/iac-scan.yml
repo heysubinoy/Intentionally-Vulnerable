@@ -23,18 +23,21 @@ jobs:
           compact: true                      # Minimize output
           quiet: true                        # Only failed checks
           output_format: json                # Output format
-          output_file_path: "./results.json" # Output file path
+          output_file_path: "results.json"   # Output file path
           token: ${{ secrets.TOKEN }}
           tenant_id: ${{ secrets.TENANT_ID }}
           endpoint: ${{ secrets.ENDPOINT }}
           label: ${{ secrets.LABEL }}
 
       - name: Debug files
-        run: ls -la
+        run: |
+          echo "📂 Listing files:"
+          ls -la
 
-      - name: Patch IaC results with repo metadata
+      - name: Patch results with metadata (safe version)
         run: |
           if [ -f results.json ]; then
+            echo "✅ Found results.json. Patching..."
             jq --arg repoLink "https://github.com/Vickydew1/Accu" \
                --arg branch "main" \
                '. += [{"details": {"repo": $repoLink, "branch": $branch}}]' \
@@ -42,4 +45,3 @@ jobs:
           else
             echo "⚠️ results.json not found — skipping patch step"
           fi
-
