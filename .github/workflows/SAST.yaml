@@ -1,0 +1,23 @@
+name: AccuKnox SAST Scan
+
+on:
+  push:
+    branches:
+      - main  # or change as per your branch
+
+jobs:
+  sast:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Run AccuKnox SAST Scanner
+        uses: accuknox/sast-scan-action@v0.0.1
+        with:
+          directory: "."  # or path to your source code
+          token: ${{ secrets.TOKEN }}
+          tenant_id: ${{ secrets.TENANT_ID }}
+          endpoint: ${{ secrets.ENDPOINT }}
+          label: ${{ secrets.LABEL }}
