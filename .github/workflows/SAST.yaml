@@ -1,23 +1,23 @@
-name: AccuKnox SAST Scan
-
+name: AccuKnox SAST Workflow
 on:
   push:
     branches:
-      - main  # or change as per your branch
+      - main
 
 jobs:
-  sast:
+  sast-scan:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Run AccuKnox SAST Scanner
-        uses: accuknox/sast-scan-action@v0.0.1
+      - name: Run AccuKnox SAST
+        uses: accuknox/accuknox-sast@v1.0.0
         with:
-          directory: "."  # or path to your source code
-          token: ${{ secrets.TOKEN }}
+          sonar_token: ${{ secrets.SONAR_TOKEN }}
+          sonar_host_url: ${{ secrets.SONAR_HOST_URL }}
+          accuknox_endpoint: ${{ secrets.ACCUKNOX_ENDPOINT }}
           tenant_id: ${{ secrets.TENANT_ID }}
-          endpoint: ${{ secrets.ENDPOINT }}
-          label: ${{ secrets.LABEL }}
+          accuknox_token: ${{ secrets.ACCUKNOX_TOKEN }}
+          label: "my-sast-scan"
+          sonar_project_key: "test"
