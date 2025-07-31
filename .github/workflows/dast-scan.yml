@@ -18,6 +18,6 @@ jobs:
           accuknox_endpoint: ${{ secrets.ACCUKNOX_ENDPOINT }}
           tenant_id: ${{ secrets.TENANT_ID }}
           accuknox_token: ${{ secrets.ACCUKNOX_TOKEN }}
-          label: "my-dast-scan"
+          label: ${{ secrets.ACCUKNOX_LABEL }}
           severity_threshold: "High"
           scan_type: "baseline"
