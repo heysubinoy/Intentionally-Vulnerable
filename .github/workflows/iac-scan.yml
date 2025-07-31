@@ -30,14 +30,14 @@ jobs:
       - name: Debug files
         run: ls -la
 
-      - name: Patch results with metadata
-        run: |
-          if [ -f results.json ]; then
-            echo "✅ Found results.json. Patching..."
-            jq --arg repoLink "https://github.com/Vickydew1/Accu" \
-               --arg branch "main" \
-               '. += [{"details": {"repo": $repoLink, "branch": $branch}}]' \
-               results.json > temp.json && mv temp.json results.json
-          else
-            echo "⚠️ results.json not found — skipping patch step"
-          fi
+      # - name: Patch results with metadata
+      #   run: |
+      #     if [ -f results.json ]; then
+      #       echo "✅ Found results.json. Patching..."
+      #       jq --arg repoLink "https://github.com/Vickydew1/Accu" \
+      #          --arg branch "main" \
+      #          '. += [{"details": {"repo": $repoLink, "branch": $branch}}]' \
+      #          results.json > temp.json && mv temp.json results.json
+      #     else
+      #       echo "⚠️ results.json not found — skipping patch step"
+      #     fi
