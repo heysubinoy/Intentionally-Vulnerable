@@ -1,4 +1,4 @@
-name: AccuKnox IaC Scan Workflow
+name: AccuKnox IaC Scan Workflow - Full Test
 
 on:
   push:
@@ -7,17 +7,16 @@ on:
     branches: [main]
 
 jobs:
-  tests:
+  test-iac-scan-options:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Run IaC scan
+      - name: Run IaC scan with all optional flags
         uses: accuknox/iac-scan-action@v0.0.1
         with:
-          directory: "./iac"                   # 👈 point to the correct folder
+          directory: "./iac"
           compact: true
           quiet: true
           output_format: json
@@ -27,17 +26,13 @@ jobs:
           endpoint: ${{ secrets.ENDPOINT }}
           label: ${{ secrets.LABEL }}
 
-      - name: Debug files
-        run: ls -la
+          # Optional inputs to test
+          soft_fail: true
+          framework: Terraform
+          baseline: "./baseline.json"
 
-      # - name: Patch results with metadata
-      #   run: |
-      #     if [ -f results.json ]; then
-      #       echo "✅ Found results.json. Patching..."
-      #       jq --arg repoLink "https://github.com/Vickydew1/Accu" \
-      #          --arg branch "main" \
-      #          '. += [{"details": {"repo": $repoLink, "branch": $branch}}]' \
-      #          results.json > temp.json && mv temp.json results.json
-      #     else
-      #       echo "⚠️ results.json not found — skipping patch step"
-      #     fi
+      - name: Check output file
+        run: cat results.json || echo "❌ No results.json file found"
+
+      - name: List files
+        run: ls -la
