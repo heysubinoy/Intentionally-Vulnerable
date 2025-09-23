@@ -23,6 +23,6 @@ jobs:
           quiet: true    # Optional: Show only failed checks
           output_format: json  # Optional: Format of output
           output_file_path: "./results.json" # Optional: Output file path
-          token: ${{ secrets.TOKEN }
+          token: ${{ secrets.TOKEN }}
           endpoint: ${{ secrets.ENDPOINT }}
           label: ${{ secrets.LABEL }}
