@@ -13,16 +13,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@main
 
       - name: Run IaC scan
         uses: accuknox/iac-scan-action@v0.0.1
         with:
-          directory: "." # Optional: Directory to scan
-          compact: true  # Optional: Minimize output
-          quiet: true    # Optional: Show only failed checks
-          output_format: json  # Optional: Format of output
-          output_file_path: "./results.json" # Optional: Output file path
-          token: ${{ secrets.TOKEN }}
+          directory: "."
+          compact: true
+          quiet: true
+          soft_fail: false
           endpoint: ${{ secrets.ENDPOINT }}
+          token: ${{ secrets.TOKEN }}
           label: ${{ secrets.LABEL }}
