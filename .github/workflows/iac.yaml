@@ -12,20 +12,17 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Create results folder
-        run: mkdir -p results
-      
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Run IaC scan
         uses: Vickydew1/iac-scan-action@main
         with:
-          directory: "." # Optional: Directory to scan
-          compact: true  # Optional: Minimise output
-          quiet: true    # Optional: Show only failed checks
-          output_format: json  # Optional: Format of output
-          output_file_path: "results/results_json.json"
+          directory: "."             # Directory to scan
+          compact: true              # Minimize output
+          quiet: true                # Show only failed checks
+          output_format: json        # Format of output
+          output_file_path: "results.json"  # Write results directly here
           token: ${{ secrets.TOKEN }}
           endpoint: ${{ secrets.ENDPOINT }}
           label: ${{ secrets.LABEL }}
