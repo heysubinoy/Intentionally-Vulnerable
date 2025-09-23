@@ -21,6 +21,7 @@ jobs:
       - name: Run IaC scan
         uses: Vickydew1/iac-scan-action@main
         with:
+          directory: "."                    
           token: ${{ secrets.TOKEN }}
           endpoint: ${{ secrets.ENDPOINT }}
           label: ${{ secrets.LABEL }}
