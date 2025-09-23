@@ -17,11 +17,11 @@ jobs:
 
       - name: Run IaC scan
         uses: accuknox/iac-scan-action@v1.0.0
-        with:
-          directory: "."
-          compact: true
-          quiet: true
-          soft_fail: false
-          endpoint: ${{ secrets.ENDPOINT }}
+       with:
+          directory: "." # Optional: Directory to scan
+          compact: true  # Optional: Minimize output
+          quiet: true    # Optional: Show only failed checks
+          output_format: json  # Optional: Format of output
           token: ${{ secrets.TOKEN }}
+          endpoint: ${{ secrets.ENDPOINT }}
           label: ${{ secrets.LABEL }}
