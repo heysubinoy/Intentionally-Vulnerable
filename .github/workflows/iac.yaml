@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@main
 
       - name: Run IaC scan
-        uses: accuknox/iac-scan-action@v1.0.0
+        uses: Vickydew1/iac-scan-action@main
        with:
           directory: "." # Optional: Directory to scan
           compact: true  # Optional: Minimize output
