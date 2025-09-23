@@ -21,11 +21,6 @@ jobs:
       - name: Run IaC scan
         uses: Vickydew1/iac-scan-action@main
         with:
-          directory: "."                     # Directory to scan
-          compact: true                      # Minimise output
-          quiet: true                        # Show only failed checks
-          output_format: json                # Format of output
-          output_file_path: "results/results_json.json"  # Must match action
           token: ${{ secrets.TOKEN }}
           endpoint: ${{ secrets.ENDPOINT }}
           label: ${{ secrets.LABEL }}
