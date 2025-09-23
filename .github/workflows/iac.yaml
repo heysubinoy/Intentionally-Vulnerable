@@ -1,0 +1,28 @@
+name: AccuKnox IaC Scan Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run IaC scan
+        uses: accuknox/iac-scan-action@v0.0.1
+        with:
+          directory: "." # Optional: Directory to scan
+          compact: true  # Optional: Minimize output
+          quiet: true    # Optional: Show only failed checks
+          output_format: json  # Optional: Format of output
+          output_file_path: "./results.json" # Optional: Output file path
+          token: ${{ secrets.TOKEN }}
+          endpoint: ${{ secrets.ENDPOINT }}
+          label: ${{ secrets.LABEL }}
