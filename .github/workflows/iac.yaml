@@ -15,9 +15,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Create results folder
-        run: mkdir -p results
-
       - name: Run IaC scan
         uses: Vickydew1/iac-scan-action@main
         with:
