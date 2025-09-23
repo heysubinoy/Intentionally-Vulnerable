@@ -19,7 +19,7 @@ jobs:
         uses: Vickydew1/iac-scan-action@main
         with:
           directory: "."        
-          soft_fail: fasle
+          soft_fail: false
           token: ${{ secrets.TOKEN }}
           endpoint: ${{ secrets.ENDPOINT }}
           label: ${{ secrets.LABEL }}
