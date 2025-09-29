@@ -9,26 +9,20 @@ on:
       - main
 
 jobs:
-  iac-scan:
+  tests:
     runs-on: ubuntu-latest
     steps:
-      # Step 1: Checkout the repository
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@main
 
-      # Step 2: Run AccuKnox IaC Scan Action
-      - name: Run AccuKnox IaC Scan
-        uses: Vickydew1/iac-scan-action@main
+      - name: Run IaC scan
+        uses: public.ecr.aws/k9v9d5v2/accuknox-aspm-scanner:v0.13.4
         with:
-          directory: "."                           # Optional, default is "."
+          file:
+          directory: ".".
           soft_fail: true
-          token: ${{ secrets.ACCUKNOX_TOKEN }}    # Required
-          endpoint: ${{ secrets.ACCUKNOX_ENDPOINT }} # Optional, default is cspm.demo.accuknox.com
-          label: ${{ secrets.ACCUKNOX_LABEL }}    # Required
-        
-          # file: ""                                 # Optional
-          # compact: true                            # Optional
-          # quiet: true                              # Optional
-          # framework: ""                            # Optional
-          # skip_framework: ""                       # Optional
-          # baseline: "baseline"                     # Optional
+          endpoint: cspm.demo.accuknox.com
+          baseline:
+          token: ${{ secrets.TOKEN }}
+          tenant_id: ${{ secrets.TENANT_ID }}
+          label: ${{ secrets.LABEL }}
