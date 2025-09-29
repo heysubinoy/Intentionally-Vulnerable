@@ -26,9 +26,9 @@ jobs:
           endpoint: ${{ secrets.ACCUKNOX_ENDPOINT }} # Optional, default is cspm.demo.accuknox.com
           label: ${{ secrets.ACCUKNOX_LABEL }}    # Required
         
-          file: ""                                 # Optional
-          compact: true                            # Optional
-          quiet: true                              # Optional
-          framework: ""                            # Optional
-          skip_framework: ""                       # Optional
-          baseline: "baseline"                     # Optional
+          # file: ""                                 # Optional
+          # compact: true                            # Optional
+          # quiet: true                              # Optional
+          # framework: ""                            # Optional
+          # skip_framework: ""                       # Optional
+          # baseline: "baseline"                     # Optional
