@@ -15,11 +15,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run IaC scan
+      - name: Run AccuKnox IaC scan
         run: |
           docker run --rm \
             -v "${{ github.workspace }}:/workspace" \
             public.ecr.aws/k9v9d5v2/accuknox-aspm-scanner:v0.13.4 \
+            scan \
             --directory /workspace \
             --soft_fail true \
             --endpoint cspm.demo.accuknox.com \
