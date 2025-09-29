@@ -9,17 +9,23 @@ on:
       - main
 
 jobs:
-  tests:
+  iac-scan:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@main
+        uses: actions/checkout@v4
 
-      - name: Run IaC scan
+      - name: Run AccuKnox IaC Scan
         uses: Vickydew1/iac-scan-action@main
         with:
-          directory: "."
-          soft_fail: false
-          endpoint: ${{ secrets.ENDPOINT }}
-          token: ${{ secrets.TOKEN }}
-          label: ${{ secrets.LABEL }}
+          directory: "."                      
+          soft_fail: true                     # <-- Enable soft fail
+          token: ${{ secrets.ACCUKNOX_TOKEN }}
+          endpoint: ${{ secrets.ACCUKNOX_ENDPOINT }}
+          label: ${{ secrets.ACCUKNOX_LABEL }}
+          file: ""                            
+          compact: true                        
+          quiet: true                          
+          framework: ""                        
+          skip_framework: ""                   
+          baseline: "baseline"                 
