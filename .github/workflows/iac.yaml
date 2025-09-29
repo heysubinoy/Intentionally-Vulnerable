@@ -25,7 +25,7 @@ jobs:
           token: ${{ secrets.ACCUKNOX_TOKEN }}    # Required
           endpoint: ${{ secrets.ACCUKNOX_ENDPOINT }} # Optional, default is cspm.demo.accuknox.com
           label: ${{ secrets.ACCUKNOX_LABEL }}    # Required
-          # Optional parameters (if needed):
+        
           file: ""                                 # Optional
           compact: true                            # Optional
           quiet: true                              # Optional
