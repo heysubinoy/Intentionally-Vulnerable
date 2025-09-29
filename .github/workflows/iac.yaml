@@ -18,30 +18,9 @@ jobs:
       - name: Run AccuKnox IaC Scan
         uses: Vickydew1/iac-scan-action@main
         with:
-          # Specify a single file to scan (optional)
-          # file: "path/to/file.tf"
-
-          # Directory to scan (default is ".")
           directory: "."
-
-          # Compact output
-          compact: true
-
-          # Show only failed checks
-          quiet: true
-
-          # Soft fail or fail workflow on scan errors
           soft_fail: false
-
-          # Optional: framework to scan (Terraform/Kubernetes)
-          # framework: "Terraform"
-
-          # Optional: framework to skip
-          # skip_framework: "Kubernetes"
-
-          # Authentication to AccuKnox SaaS
           token: ${{ secrets.TOKEN }}
-          tenant_id: ${{ secrets.TENANT_ID }}
           endpoint: ${{ secrets.ENDPOINT }}
           label: ${{ secrets.LABEL }}
 
