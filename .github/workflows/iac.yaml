@@ -20,8 +20,8 @@ jobs:
       - name: Run AccuKnox IaC Scan
         uses: Vickydew1/iac-scan-action@main
         with:
-          directory: "."                     # Scan the full repo directory
-          soft_fail: false                   # Fail the workflow if scan finds issues
-          endpoint: ${{ secrets.ENDPOINT }} # CSPM panel URL
-          label: ${{ secrets.LABEL }}       # Label to associate scan results
-          token: ${{ secrets.TOKEN }}       # Authentication token
+          directory: "."                          # Scan the full repo directory
+          soft_fail: false                        # Fail workflow if scan finds issues
+          endpoint: ${{ secrets.ACCUKNOX_ENDPOINT }} # Pass endpoint secret
+          label: ${{ secrets.ACCUKNOX_LABEL }}       # Pass label secret
+          token: ${{ secrets.ACCUKNOX_TOKEN }}       # Pass token secret
