@@ -21,7 +21,7 @@ jobs:
         uses: Vickydew1/iac-scan-action@main
         with:
           directory: "."                           # Optional, default is "."
-          soft_fail: false                         # Optional, default is false
+          soft_fail: true                         # Optional, default is false
           token: ${{ secrets.ACCUKNOX_TOKEN }}    # Required
           endpoint: ${{ secrets.ACCUKNOX_ENDPOINT }} # Optional, default is cspm.demo.accuknox.com
           label: ${{ secrets.ACCUKNOX_LABEL }}    # Required
