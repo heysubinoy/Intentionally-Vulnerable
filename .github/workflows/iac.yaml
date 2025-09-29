@@ -12,7 +12,7 @@ jobs:
   iac-scan:
     runs-on: ubuntu-latest
     steps:
-      # Step 1: Checkout the repository so the scanner can see all files
+      # Step 1: Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -20,8 +20,11 @@ jobs:
       - name: Run AccuKnox IaC Scan
         uses: Vickydew1/iac-scan-action@main
         with:
-          directory: "."             # Scan the full repo directory
-          soft_fail: false           # Fail the workflow if scan finds issues
-          token: ${{ secrets.TOKEN }}       # Your AccuKnox API token
+          directory: "."                     # Scan the full repo directory
+          soft_fail: false                   # Fail the workflow if scan finds issues
           endpoint: ${{ secrets.ENDPOINT }} # CSPM panel URL
           label: ${{ secrets.LABEL }}       # Label to associate scan results
+
+        with:
+          name: accuknox-iac-results
+          path: results.json  # Adjust if your Action outputs elsewhere
