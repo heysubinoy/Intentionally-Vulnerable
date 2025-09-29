@@ -24,7 +24,3 @@ jobs:
           soft_fail: false                   # Fail the workflow if scan finds issues
           endpoint: ${{ secrets.ENDPOINT }} # CSPM panel URL
           label: ${{ secrets.LABEL }}       # Label to associate scan results
-
-        with:
-          name: accuknox-iac-results
-          path: results.json  # Adjust if your Action outputs elsewhere
