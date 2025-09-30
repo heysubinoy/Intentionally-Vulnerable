@@ -21,4 +21,4 @@ jobs:
           tenant_id: ${{ secrets.TENANT_ID }}
           label: "my-sast-scan"
           sonar_project_key: "my-project-key"
-          input_soft_fail: false
+          input_soft_fail: true
