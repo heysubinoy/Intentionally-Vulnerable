@@ -23,4 +23,10 @@ jobs:
           token: ${{ secrets.ACCUKNOX_TOKEN }}
           endpoint: ${{ secrets.ACCUKNOX_ENDPOINT }}
           label: ${{ secrets.ACCUKNOX_LABEL }}
+          file: ""                            
+          compact: true                        
+          quiet: true                          
+          framework: ""                        
+          skip_framework: ""                   
+          baseline: "baseline"  
          
