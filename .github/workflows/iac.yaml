@@ -2,11 +2,9 @@ name: AccuKnox IaC Scan Workflow
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   iac-scan:
@@ -18,15 +16,12 @@ jobs:
       - name: Run AccuKnox IaC Scan
         uses: Vickydew1/iac-scan-action@main
         with:
-          directory: "."                      
-          soft_fail: true                   
+          directory: "."
+          soft_fail: true
           token: ${{ secrets.ACCUKNOX_TOKEN }}
           endpoint: ${{ secrets.ACCUKNOX_ENDPOINT }}
           label: ${{ secrets.ACCUKNOX_LABEL }}
-          file: ""                            
-          compact: true                        
-          quiet: true                          
-          framework: ""                        
-          skip_framework: ""                   
-          baseline: "baseline"  
-         
+          file: ""
+          compact: true
+          quiet: true
+          framework: ""
