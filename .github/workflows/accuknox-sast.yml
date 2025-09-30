@@ -19,6 +19,6 @@ jobs:
           accuknox_endpoint: ${{ secrets.ACCUKNOX_ENDPOINT }}
           accuknox_token: ${{ secrets.ACCUKNOX_DEV_TOKEN }}
           tenant_id: ${{ secrets.TENANT_ID }}
-          label: "my-sast-scan"
+          label: "testVD"
           sonar_project_key: "my-project-key"
           input_soft_fail: true
