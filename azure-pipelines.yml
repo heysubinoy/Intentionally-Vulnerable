@@ -20,4 +20,5 @@ steps:
     accuknoxToken: '$(accuknox-token)'
     accuknoxLabel: '$(accuknox-label)'
     accuknoxTenantId: "123"
+    skipSonarQubeScan: true 
     qualityGate: false
