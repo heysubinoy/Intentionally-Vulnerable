@@ -13,10 +13,10 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
     
-- task: accuknox-iac@2
+- task: AccuKnox-container-scan@2
   inputs:
+    imageName: 'vulnerables/web-dvwa'
+    tag: 'v1.0.0'
     accuknoxEndpoint: '$(accuknox-enpoint)'
     accuknoxToken: '$(accuknox-token)'
     accuknoxLabel: '$(accuknox-label)'
-    inputQuiet: true
-    inputCompact: true
