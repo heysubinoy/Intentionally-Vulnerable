@@ -11,7 +11,7 @@ pool:
 
 steps:
     
-- task: accuknox-sq-sast@2
+- task: accuknox-sq-sast@1
   inputs:
     sonarQubeUrl: '$(sonarQubeUrl)'
     sonarQubeToken: '$(sonarQubeToken)'
@@ -19,4 +19,5 @@ steps:
     accuknoxEndpoint: '$(accuknox-enpoint)'
     accuknoxToken: '$(accuknox-token)'
     accuknoxLabel: '$(accuknox-label)'
+    accuknoxTenantId: "123"
     qualityGate: false
