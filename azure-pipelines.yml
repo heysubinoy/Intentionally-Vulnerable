@@ -10,14 +10,13 @@ pool:
   name: Test
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
     
-- task: AccuKnox-DAST@2
+- task: accuknox-sq-sast@2
   inputs:
-    targetURL: 'http://testphp.vulnweb.com/'
-    scanType: 'baseline'
+    sonarQubeUrl: '$(sonarQubeUrl)'
+    sonarQubeToken: '$(sonarQubeToken)'
+    sonarQubeProjectKey: '$(sonarQubeProjectKey)'
     accuknoxEndpoint: '$(accuknox-enpoint)'
     accuknoxToken: '$(accuknox-token)'
     accuknoxLabel: '$(accuknox-label)'
-    qualityGate: 'HIGH'
+    qualityGate: false
