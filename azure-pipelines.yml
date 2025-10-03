@@ -16,7 +16,7 @@ steps:
 - task: AccuKnox-container-scan@2
   inputs:
     imageName: 'vulnerables/web-dvwa'
-    tag: 'v1.0.0'
+    tag: 'latest'
     accuknoxEndpoint: '$(accuknox-enpoint)'
     accuknoxToken: '$(accuknox-token)'
     accuknoxLabel: '$(accuknox-label)'
