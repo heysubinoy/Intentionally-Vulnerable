@@ -13,12 +13,11 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
     
-- task: AccuKnox-container-scan@2
+- task: AccuKnox-DAST@2
   inputs:
-    imageName: 'bkimminich/juice-shop'
-    tag: 'latest'
+    targetURL: 'http://testphp.vulnweb.com/'
+    scanType: 'baseline'
     accuknoxEndpoint: '$(accuknox-enpoint)'
     accuknoxToken: '$(accuknox-token)'
     accuknoxLabel: '$(accuknox-label)'
-    inputSoftFail: true
-    severity: 'CRITICAL'
+    qualityGate: 'HIGH'
