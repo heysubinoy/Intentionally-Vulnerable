@@ -13,9 +13,10 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
     
-- task: accuknox-secret-scan@1
+- task: accuknox-iac@2
   inputs:
     accuknoxEndpoint: '$(accuknox-enpoint)'
     accuknoxToken: '$(accuknox-token)'
     accuknoxLabel: '$(accuknox-label)'
-    inputSoftFail: false
+    inputQuiet: true
+    inputCompact: true
