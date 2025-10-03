@@ -20,3 +20,4 @@ stages:
         accuknoxLabel: '$(accuknox-label)'
         inputQuiet: true
         inputCompact: true
+        inputSoftFail: true
