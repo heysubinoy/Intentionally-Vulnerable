@@ -13,9 +13,9 @@ steps:
     
 - task: accuknox-sq-sast@1
   inputs:
-    sonarQubeUrl: '$(sonarQubeUrl)'
-    sonarQubeToken: '$(sonarQubeToken)'
-    sonarQubeProjectKey: '$(sonarQubeProjectKey)'
+    sonarQubeUrl: '$(sq-url)'
+    sonarQubeToken: '$(sq-token)'
+    sonarQubeProjectKey: '$(sq-pk)'
     accuknoxEndpoint: '$(accuknox-enpoint)'
     accuknoxToken: '$(accuknox-token)'
     accuknoxLabel: '$(accuknox-label)'
