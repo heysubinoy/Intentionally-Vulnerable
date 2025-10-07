@@ -1,0 +1,23 @@
+name: AccuKnox Container Scan
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  container-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run AccuKnox Container Scanner
+        uses: accuknox/container-scan-action@f58a4380e78d53de344dbe2321b5a52070080f0b
+        with:
+          endpoint: ${{ secrets.ACCUKNOX_ENDPOINT }}
+          label: ${{ secrets.ACCUKNOX_LABEL }}
+          token: ${{ secrets.ACCUKNOX_TOKEN }}
+          image: "bkimminich/juice-shop"
+          tag: "latest"
+          severity: "HIGH,CRITICAL"
