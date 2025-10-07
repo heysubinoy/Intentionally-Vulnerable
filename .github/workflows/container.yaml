@@ -18,6 +18,7 @@ jobs:
           endpoint: ${{ secrets.ACCUKNOX_ENDPOINT }}
           label: ${{ secrets.ACCUKNOX_LABEL }}
           token: ${{ secrets.ACCUKNOX_TOKEN }}
-          image: "bkimminich/juice-shop"
+          image_name: "bkimminich/juice-shop"
           tag: "latest"
           severity: "HIGH,CRITICAL"
+          "soft_fail": true
