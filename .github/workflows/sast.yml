@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run SAST Scan with AccuKnox
-        uses: accuknox/sast-scan-opengrep-action@abba5303497f58fac8cd989af20ce526be698fb5
+        uses: accuknox/sast-scan-opengrep-action@3b4fd6be123c87b7e82fa72d21627ce0a61db94a
         with:
           ACCUKNOX_ENDPOINT: ${{ secrets.ACCUKNOX_ENDPOINT }}
           ACCUKNOX_TOKEN: ${{ secrets.ACCUKNOX_TOKEN }}
