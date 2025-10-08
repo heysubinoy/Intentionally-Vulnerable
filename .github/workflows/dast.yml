@@ -1,0 +1,30 @@
+name: AccuKnox DAST Scan Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  dast-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run AccuKnox DAST Scan
+        uses: Vickydew1/dast-scan-action@main
+        with:
+          # Map GitHub secrets to action input names
+          token: ${{ secrets.ACCUKNOX_TOKEN }}
+          label: ${{ secrets.ACCUKNOX_LABEL }}
+          endpoint: ${{ secrets.ACCUKNOX_ENDPOINT }}
+
+          # Required scan URL
+          target_url: "https://owasp.org/www-project-webgoat/"
+          severity_threshold: "LOW"
+          dast_scan_type: "full-scan"
+          soft_fail: "true"
